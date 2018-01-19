@@ -29,7 +29,7 @@ class AflCoverage(Analysis):
             #will be available in new tracer
             #t = tracer.QEMURunner(project=self.project, binary=sample.binary,  input="", argv=argv)
             t = LightTracer(project=self.project, binary=binary,  input="", argv=argv)
-            kb.cov.register_new_path(set(t.trace))
+            kb.cov.register_new_path(set(t.r.trace))
             l.info("Processing [%d/%d] %s, blocks hit: %d" % (i+1, len(queue_files), f, kb.cov.nodes_hit))
             if self.max_samples and i+1 >= self.max_samples:
                 break
